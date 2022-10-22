@@ -12,6 +12,10 @@ class ContactList extends StatelessWidget {
   final _back = ContactListBack();
 
   CircleAvatar circleAvatar(String url) {
+    return (Uri.tryParse(url)!.isAbsolute)
+        ? CircleAvatar(backgroundImage: NetworkImage(url))
+        : CircleAvatar(child: Icon(Icons.person));
+
     try {
       return CircleAvatar(backgroundImage: NetworkImage(url));
     } catch (e) {
