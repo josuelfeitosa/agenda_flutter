@@ -1,4 +1,3 @@
-import 'package:crud_agenda/app/database/sqlite/dao/contact_dao_impl.dart';
 import 'package:crud_agenda/app/domain/entities/contact.dart';
 import 'package:crud_agenda/app/domain/exception/domain_layer_exception.dart';
 import 'package:crud_agenda/app/domain/interfaces/contact_dao.dart';
