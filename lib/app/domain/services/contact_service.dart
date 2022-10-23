@@ -21,7 +21,7 @@ class ContactService {
     return _dao.find();
   }
 
-  validateName(String name) {
+  validateName(String? name) {
     var min = 3;
     var max = 50;
 
@@ -36,7 +36,7 @@ class ContactService {
     }
   }
 
-  validateEmail(String email) {
+  validateEmail(String? email) {
     if (email == null) {
       throw new DomainLayerException('O e-mail é obrigatório.');
     } else if (!email.contains('@')) {
@@ -44,7 +44,7 @@ class ContactService {
     }
   }
 
-  validatePhone(String phone) {
+  validatePhone(String? phone) {
     var format = RegExp(r'^\([1-9]{2}\) [9] [6-9]{1}[0-9]{3}\-[0-9]{4}$');
     if (phone == null) {
       throw new DomainLayerException('O telefone é obrigatório.');

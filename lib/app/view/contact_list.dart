@@ -1,10 +1,8 @@
-import 'package:crud_agenda/app/database/sqlite/dao/contact_dao_impl.dart';
 import 'package:crud_agenda/app/domain/entities/contact.dart';
 import 'package:crud_agenda/app/my_app.dart';
 import 'package:crud_agenda/app/view/contact_list_back.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
-import 'package:sqflite/sqflite.dart';
 
 class ContactList extends StatelessWidget {
   //const ContactList({super.key});
@@ -15,12 +13,12 @@ class ContactList extends StatelessWidget {
     return (Uri.tryParse(url)!.isAbsolute)
         ? CircleAvatar(backgroundImage: NetworkImage(url))
         : CircleAvatar(child: Icon(Icons.person));
-
+    /*
     try {
       return CircleAvatar(backgroundImage: NetworkImage(url));
     } catch (e) {
       return CircleAvatar(child: Icon(Icons.person));
-    }
+    }*/
   }
 
   Widget iconEditButton(Function() onPressed) {
@@ -67,7 +65,7 @@ class ContactList extends StatelessWidget {
         actions: [
           IconButton(
             onPressed: () {
-              Navigator.of(context).pushNamed(MyApp.CONTACT_FORM);
+              _back.goToForm(context);
             },
             icon: Icon(Icons.add),
           )
@@ -88,9 +86,9 @@ class ContactList extends StatelessWidget {
                     var contato = lista[i];
 
                     return ListTile(
-                      leading: circleAvatar(contato.urlAvatar),
-                      title: Text(contato.nome),
-                      subtitle: Text(contato.telefone),
+                      leading: circleAvatar(contato.urlAvatar!),
+                      title: Text(contato.nome!),
+                      subtitle: Text(contato.telefone!),
                       trailing: Container(
                           width: 100,
                           child: Row(
